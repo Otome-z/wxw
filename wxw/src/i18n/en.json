@@ -1,0 +1,18 @@
+{
+    "Remember password" : "Password",
+    "Delete-":"Delete",
+    "chat":{
+        "all":"All",
+        "read":"Read",
+        "unread":"Unread",
+        "star":"Star"
+    },
+    "el": {
+        "pagination": {
+            "goto": "goto",
+            "pagesize": "pagesize",
+            "total": "total {total}",
+            "pageClassifier": "pageClassifier"
+        }
+    }
+}
