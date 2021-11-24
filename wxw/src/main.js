@@ -9,6 +9,7 @@ import vuescroll from 'vuescroll';
 import 'vuescroll/dist/vuescroll.css';
 
 import './plugins/element.js';
+
 import './assets/fonts/style.css';
 import utils from './assets/js/utils.js';
 import ElementLocale from 'element-ui/lib/locale';
@@ -21,6 +22,21 @@ Vue.prototype.$send = send;
 Vue.prototype.$ = $;
 // Vue.prototype.utils = utils;
 
+// 切换主题颜色
+// store.state.platform_page = '1';
+const platform_page = store.state.platform_page;
+
+if (platform_page == '1') {
+    require('./assets/theme/Alibaba/index.css');
+} else {
+    require('element-ui/lib/theme-chalk/index.css');
+}
+
+if (process.env.NODE_ENV == 'development') {
+    Vue.config.devtools = true;
+} else {
+    Vue.config.devtools = false;
+}
 const messages = {
     zh: require('@/i18n/zh.json'),
     en: require('@/i18n/en.json'),

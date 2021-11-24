@@ -55,8 +55,10 @@ import {
     Image,
     Collapse,
     CollapseItem,
+    RadioButton,
 } from 'element-ui';
 
+Vue.use(RadioButton);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Image);
