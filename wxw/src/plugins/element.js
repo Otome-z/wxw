@@ -56,8 +56,14 @@ import {
     Collapse,
     CollapseItem,
     RadioButton,
+    Progress,
+    TimePicker,
+    ButtonGroup,
 } from 'element-ui';
 
+Vue.use(ButtonGroup);
+Vue.use(TimePicker);
+Vue.use(Progress);
 Vue.use(RadioButton);
 Vue.use(Collapse);
 Vue.use(CollapseItem);

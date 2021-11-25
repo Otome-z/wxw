@@ -11,8 +11,9 @@ import 'vuescroll/dist/vuescroll.css';
 import './plugins/element.js';
 
 import './assets/fonts/style.css';
-import utils from './assets/js/utils.js';
 import ElementLocale from 'element-ui/lib/locale';
+
+import 'font-awesome/css/font-awesome.min.css';
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);

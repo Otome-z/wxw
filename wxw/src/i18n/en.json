@@ -13,6 +13,12 @@
             "pagesize": "pagesize",
             "total": "total {total}",
             "pageClassifier": "pageClassifier"
+        },
+        "datepicker": {
+            "startTime":"startTime",
+            "endTime":"endTime",
+            "cancel":"cancel",
+            "confirm":"confirm"
         }
     }
 }

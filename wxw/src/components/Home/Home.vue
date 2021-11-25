@@ -90,44 +90,100 @@
                 </el-aside>
                 <!-- 右边主体内容 -->
                 <el-main>
-                    <el-header
-                        ><el-menu
-                            default-active="1"
-                            class="el-menu-demo"
-                            mode="horizontal"
-                            @select="selectTab"
-                        >
-                            <el-menu-item index="1">处理中心</el-menu-item>
-                            <el-submenu index="2">
-                                <template slot="title">我的工作台</template>
-                                <el-menu-item index="2-1">选项1</el-menu-item>
-                                <el-menu-item index="2-2">选项2</el-menu-item>
-                                <el-menu-item index="2-3">选项3</el-menu-item>
-                                <el-submenu index="2-4">
-                                    <template slot="title">选项4</template>
-                                    <el-menu-item index="2-4-1"
-                                        >选项1</el-menu-item
-                                    >
-                                    <el-menu-item index="2-4-2"
-                                        >选项2</el-menu-item
-                                    >
-                                    <el-menu-item index="2-4-3"
-                                        >选项3</el-menu-item
-                                    >
-                                </el-submenu>
-                            </el-submenu>
-                            <el-menu-item index="3" disabled
-                                >消息中心</el-menu-item
+                    <el-header>
+                        <div class="f-l">
+                            <div class="tabs">
+                                <span
+                                    class="tab"
+                                    v-for="(tab, index) in tabs"
+                                    :key="index"
+                                    >{{ tab.text }}</span
+                                >
+                            </div>
+                        </div>
+                        <div class="f-r ">
+                            <i class="el-icon-bell"></i>
+                            <i class="fa fa-question-circle-o  mr-20px"></i>
+                            <el-divider direction="vertical"></el-divider>
+                            <span class="id ml-20px">ID:123465</span>
+                            <el-button size="mini" type="info"
+                                >免费版</el-button
                             >
-                            <el-menu-item index="4"
-                                ><a href="https://www.ele.me" target="_blank"
-                                    >订单管理</a
-                                ></el-menu-item
+                            <el-button size="mini" type="primary"
+                                >升级</el-button
                             >
-                        </el-menu></el-header
-                    >
+                            <el-popover
+                                placement="top-start"
+                                width="300"
+                                trigger="hover"
+                                popper-class="user_popover"
+                            >
+                                <div>
+                                    <div class="welcome">你好: 125*4789</div>
+                                    <div class="user_info">
+                                        <div class="clearfloat">
+                                            <div class="f-l cap">当前版本</div>
+                                            <div class="f-r">VIP2</div>
+                                        </div>
+                                        <div class="clearfloat">
+                                            <div class="f-l cap">到期</div>
+                                            <div class="f-r">2021-12-15</div>
+                                        </div>
+                                        <div class="clearfloat">
+                                            <div class="f-l cap"
+                                                >剩余店铺点数<i
+                                                    class="el-icon-question"
+                                                ></i
+                                            ></div>
+                                            <div class="f-r">3点/10点</div>
+                                        </div>
+                                        <div class="clearfloat">
+                                            <el-progress
+                                                :stroke-width="8"
+                                                :percentage="50"
+                                                :format="format"
+                                            ></el-progress>
+                                        </div>
+                                        <div class="clearfloat">
+                                            <div class="f-l cap"
+                                                ><img
+                                                    src="https://www.wxwerp.com/images/platform_icons/icon_17.png"
+                                                    alt=""
+                                                />Shopee</div
+                                            >
+                                            <div class="f-r">已绑定 5 </div>
+                                        </div>
+                                        <el-divider></el-divider>
+                                        <div class="user_option">
+                                            <i class="fa fa-user mr-20px"></i>
+                                            <span>账号管理</span>
+                                        </div>
+                                        <div class="user_option">
+                                            <i class="fa fa-user mr-20px"></i>
+                                            <span>重置密码</span>
+                                        </div>
+                                        <el-divider></el-divider>
+                                        <div class="user_option">
+                                            <i
+                                                class="fa fa-power-off mr-20px"
+                                            ></i>
+                                            <span>退出</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i
+                                    class="el-icon-user
+                            "
+                                    slot="reference"
+                                ></i>
+                            </el-popover>
+                        </div>
+                    </el-header>
+                    <div class="page_title">产品列表</div>
                     <keep-alive>
-                        <router-view></router-view>
+                        <div class="content">
+                            <router-view></router-view>
+                        </div>
                     </keep-alive>
                 </el-main>
             </el-container>
@@ -172,6 +228,37 @@ export default {
 
             searchOptions: [],
             searchValue: '',
+
+            tabs: [
+                {
+                    text: '首页',
+                    path: '',
+                },
+                {
+                    text: '产品',
+                    path: '',
+                },
+                {
+                    text: '订单',
+                    path: '',
+                },
+                {
+                    text: '营销',
+                    path: '',
+                },
+                {
+                    text: '仓库',
+                    path: '',
+                },
+                {
+                    text: '物流',
+                    path: '',
+                },
+                {
+                    text: '报表',
+                    path: '',
+                },
+            ],
         };
     },
     created() {
@@ -246,6 +333,10 @@ export default {
                 debugger;
             });
         },
+
+        format(percentage) {
+            return '';
+        },
     },
 
     computed: {
@@ -272,11 +363,69 @@ export default {
 
 <style lang="scss" scoped>
 .el-header {
-    padding: 0;
+    padding: 0 0 1px 0;
+    border-bottom: 1px solid #ddd;
+    height: 57px !important;
+    background: white;
+
+    .f-r {
+        line-height: 57px;
+        margin-right: 20px;
+        .el-icon-user {
+            font-size: 25px;
+            border-radius: 23px;
+            border: 2px solid;
+            color: #7e7e7e;
+            font-weight: 600;
+            position: relative;
+            top: 3px;
+            margin-left: 20px;
+        }
+
+        .el-button--mini {
+            padding: 5px 11px;
+            position: relative;
+            top: -1px;
+        }
+
+        .id {
+            margin-right: 25px;
+            color: #788ba2;
+        }
+
+        i:not(.el-icon-user) {
+            color: #788ba2;
+            margin-left: 25px;
+            &:hover {
+                color: #5cb6ff;
+            }
+        }
+    }
+
+    .tabs {
+        .tab {
+            display: inline-block;
+            padding: 17px 25px;
+            height: 22px;
+            cursor: pointer;
+            &:hover {
+                background-color: #ecf5ff;
+                color: #409eff;
+            }
+        }
+    }
 }
 
 .el-main {
     padding: 0;
+    background: #f0f2f5;
+    .page_title {
+        background: white;
+        padding: 13px 15px;
+    }
+    .content {
+        padding: 10px;
+    }
 }
 .el-container {
     height: 100%;
@@ -417,6 +566,44 @@ export default {
     }
     .el-menu--popup {
         padding: 0;
+    }
+}
+.user_popover {
+    padding: 0px !important;
+    .popper__arrow:after {
+        border-bottom-color: #409eff !important ;
+    }
+    .clearfloat {
+        margin-bottom: 10px;
+    }
+
+    .welcome {
+        padding: 25px 20px 15px 20px;
+        background: #409eff;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+    }
+    .user_info {
+        padding: 20px 20px 10px 20px;
+    }
+    .cap {
+        color: #999999;
+        font-size: 16px;
+    }
+
+    .el-progress-bar {
+        padding-right: 0px;
+    }
+    .el-divider--horizontal {
+        margin: 15px 0px;
+    }
+    .user_option {
+        padding: 10px 0px;
+        cursor: pointer;
+        &:hover {
+            color: #409eff;
+        }
     }
 }
 </style>
