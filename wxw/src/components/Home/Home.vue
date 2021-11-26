@@ -193,6 +193,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import $ from 'jquery';
 
 export default {
     data() {
@@ -329,8 +330,11 @@ export default {
             });
             this.$nextTick(() => {
                 this.$refs.asideMenu.open(option.index);
-                console.log(this.$refs[option.selfIndex][0].$el);
-                debugger;
+                let el = $(this.$refs[option.selfIndex][0].$el);
+                el.addClass('checked');
+                setTimeout(() => {
+                    el.removeClass('checked');
+                }, 500);
             });
         },
 
@@ -479,6 +483,7 @@ export default {
             }
             .checked {
                 background-color: #348fe4 !important;
+                color: white !important;
             }
 
             .el-submenu .el-menu-item {

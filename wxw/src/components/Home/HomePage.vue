@@ -96,8 +96,8 @@
                         :data="tableData"
                         ref="table"
                         class="mb-10px"
-                        style="width: 100%"
                         @row-click="rowClick"
+                        style="width:100%"
                     >
                         <el-table-column type="selection" width="55">
                         </el-table-column>
@@ -250,7 +250,6 @@ export default {
             currentPage4: 1,
         };
     },
-
     methods: {
         rowClick(row, column, event) {
             this.$refs.table.toggleRowExpansion(row);
@@ -264,6 +263,7 @@ export default {
     padding: 10px;
     background: white;
     border-radius: 4px;
+    margin-bottom: 20px;
     .item {
         display: inline-block;
         margin-left: 20px;
